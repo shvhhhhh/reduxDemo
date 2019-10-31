@@ -1,0 +1,30 @@
+.header {
+  background-color: #5bc0de;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: hsla(0, 0%, 100%, 0.5);
+}
+nav {
+  height: 40px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+a:hover {
+  color: #d6eff7;
+}
+
+ul > li {
+  text-align: left;
+}
+
+.active-link {
+  color: white;
+}
