@@ -14,13 +14,16 @@
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "source-map-explorer": "^2.1.0",
     "typescript": "3.6.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-prod": "react-scripts build",
+    "deploy": "firebase deploy --token $FIREBASE_TOKEN --non-interactive"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "firebase-tools": "^7.6.2"
   }
 }

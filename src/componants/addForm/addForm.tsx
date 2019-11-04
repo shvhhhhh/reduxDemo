@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import style from "./addForm.module.css";
 import { Link } from "react-router-dom";
 export default class AddForm extends Component<
   any,
@@ -50,23 +50,23 @@ export default class AddForm extends Component<
   render() {
     return (
       <form onSubmit={this.addCourse}>
-        <div className='form-group'>
+        <div className={style["form-group"]}>
           <label>Title</label>
           <input
             name={"courseTitle"}
             placeholder={"Title of the course"}
-            className={"form-control"}
+            className={style["form-control"]}
             value={this.state.courseTitle}
             onChange={this.onChange}
             required
           />
         </div>
-        <div className='form-group'>
+        <div className={style["form-group"]}>
           <label>Author</label>
           <select
             name='courseAuthor'
             value={this.state.courseAuthor}
-            className='form-control'
+            className={style["form-control"]}
             onChange={this.onChange}
             required>
             <option value=''></option>
@@ -75,23 +75,23 @@ export default class AddForm extends Component<
             <option value='Pardeep kumar'>Pardeep kumar</option>
           </select>
         </div>
-        <div className='form-group'>
+        <div className={style["form-group"]}>
           <label>Category</label>
           <input
             name='courseCategory'
             placeholder='Category of the course'
-            className='form-control'
+            className={style["form-control"]}
             value={this.state.courseCategory}
             onChange={this.onChange}
             required
           />
         </div>
-        <div className='form-group'>
+        <div className={style["form-group"]}>
           <label>Length</label>
           <input
             name='courseLength'
             placeholder='Length of course'
-            className='form-control'
+            className={style["form-control"]}
             value={this.state.courseLength}
             onChange={this.onChange}
             required
@@ -99,18 +99,19 @@ export default class AddForm extends Component<
             title='XX:XX'
           />
         </div>
-        <div className='form-btn-container'>
-          <button className='form-btn submit-btn'>
-            <i className='fa fa-paper-plane-o' aria-hidden='true'></i> Submit
+        <div className={style["form-btn-container"]}>
+          <button className={style["form-btn submit-btn"]}>
+            <i className={style["fa fa-paper-plane-o"]} aria-hidden='true'></i>{" "}
+            Submit
           </button>
           <input
             type='reset'
-            className='form-btn'
+            className={style["form-btn"]}
             value='Clear Values'
             onClick={this.clearForm}
           />
           <Link to='/'>
-            <button className='form-btn'>Cancel</button>
+            <button className={style["form-btn"]}>Cancel</button>
           </Link>
         </div>
       </form>
