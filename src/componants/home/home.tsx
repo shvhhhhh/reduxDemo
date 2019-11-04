@@ -3,17 +3,33 @@ import ButtonGroup from "../buttonGroup/buttonGroup";
 import Table from "../table/table";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import { deleteCourse } from "../../redux/actions/updateCourse";
 class Home extends Component<any, any> {
   constructor(props: any) {
     super(props);
-    console.log(props);
+    this.state = { selectedCourseId: null };
   }
+  deleteCourse = () => {
+    this.props.deleteCourse(this.state.selectedCourseId);
+    this.setState({ selectedCourseId: null });
+  };
+  selectCourse = (id: Number) => {
+    this.setState({ selectedCourseId: id });
+  };
+
   render() {
     return (
       <div>
         <h1>Courses</h1>
-        <ButtonGroup />
-        <Table courseList={this.props.courses.courseList} />
+        <ButtonGroup
+          deleteCourse={this.deleteCourse}
+          selectedCourseId={this.state.selectedCourseId}
+        />
+        <Table
+          selectedCourseId={this.state.selectedCourseId}
+          selectCourse={this.selectCourse}
+          courseList={this.props.courses.courseList}
+        />
       </div>
     );
   }
@@ -24,8 +40,9 @@ function mapStateToProps(state: any) {
   return { courses };
 }
 
-export default withRouter(connect<any, any, any>(mapStateToProps)(Home));
-
-interface PassedProps extends React.Props<any> {
-  props: { courses: { courses: { courseList: any } } };
-}
+export default withRouter(
+  connect<any, any, any>(
+    mapStateToProps,
+    { deleteCourse }
+  )(Home)
+);

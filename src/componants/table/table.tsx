@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./style.css";
-export default class Table extends Component<any, any> {
+export default class Table extends Component<
+  { selectCourse: Function; courseList: [] } & any,
+  any
+> {
   constructor(props: { courseList: any }) {
     super(props);
   }
@@ -17,16 +20,21 @@ export default class Table extends Component<any, any> {
         </thead>
         <tbody>
           {this.props.courseList.map(
-            (
-              course: {
-                courseTitle: String;
-                courseCategory: String;
-                courseLength: String;
-                courseAuthor: String;
-              },
-              i: number
-            ) => (
-              <tr key={i}>
+            (course: {
+              id: Number;
+              courseTitle: String;
+              courseCategory: String;
+              courseLength: String;
+              courseAuthor: String;
+            }) => (
+              <tr
+                key={course.id.toString()}
+                style={
+                  this.props.selectedCourseId == course.id
+                    ? { backgroundColor: "red", color: "white" }
+                    : {}
+                }
+                onClick={() => this.props.selectCourse(course.id)}>
                 <td className='title'>{course.courseTitle}</td>
                 <td>{course.courseLength}</td>
                 <td>{course.courseCategory}</td>

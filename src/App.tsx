@@ -11,16 +11,18 @@ const App: React.FC = () => {
     <Provider store={store}>
       <div className='App'>
         <Header />
-        <Router>
-          {routes.map((route, key) => (
-            <Route
-              key={key}
-              path={route.path}
-              exact
-              component={route.component}
-            />
-          ))}
-        </Router>
+        <React.Suspense fallback={<div>LOADING...</div>}>
+          <Router>
+            {routes.map((route, key) => (
+              <Route
+                key={key}
+                path={route.path}
+                exact
+                component={route.component}
+              />
+            ))}
+          </Router>
+        </React.Suspense>
       </div>
     </Provider>
   );

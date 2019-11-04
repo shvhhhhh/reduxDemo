@@ -20,6 +20,15 @@ export default class AddForm extends Component<
     };
   }
 
+  componentDidUpdate(prevProps: any) {
+    if (
+      this.props.isUpdateForm !== prevProps.isUpdateForm &&
+      this.props.isUpdateForm
+    ) {
+      this.setState({ ...this.props.initialData });
+    }
+  }
+
   onChange = (event: any) => {
     this.setState({ ...this.state, [event.target.name]: event.target.value });
   };
@@ -34,9 +43,9 @@ export default class AddForm extends Component<
   };
 
   addCourse = (e: any) => {
-    console.log(e);
     e.preventDefault();
-    this.props.addCourse(this.state);
+    if (this.props.isUpdateForm) this.props.updateCourse(this.state);
+    else this.props.addCourse(this.state);
   };
   render() {
     return (
